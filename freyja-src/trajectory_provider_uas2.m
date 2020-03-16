@@ -1,0 +1,19 @@
+function TREF = trajectory_provider_uas2( func_input )
+%TRAJECTORY_PROVIDER_UAS2 Trajectory states for second UAS.
+%   TREF is a 7x1 vector: [pn, pe, pd, vn, ve, vd, yaw]'.
+%                         Positions, velocities and Yaw.
+%   Use "assert( length(TREF) == 7 )" to help CodeGen if using it.
+
+  tnow = func_input(1);
+  uas1_state = func_input(2:7);
+  self_state = func_input(8:13);
+  
+  TREF = [ 2*sin(tnow); ...
+           2*cos(tnow); ...
+           -4;          ...
+           2*cos(tnow); ...
+           -2*sin(tnow); ...
+           0;           ...
+           0 ];
+end
+
